@@ -1,0 +1,3 @@
+extend normalized data to other files too.
+filter and add data as needed for all files and make them ready
+visualize the contents on web.

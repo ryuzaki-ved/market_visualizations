@@ -1,6 +1,23 @@
 import React, { useState } from 'react';
 import { Dropdown } from 'semantic-ui-react'; // Assuming you're using Semantic UI
 
+useEffect(() => {
+    const fetchData = async () => {
+        const response = await fetch('http://localhost:8000/strikes/');
+        const data = await response.json();
+        // Process the data to set expiryOptions, strikesOptions, and chartsOptions
+    };
+
+    fetchData();
+}, []);
+
+const fetchHistoricalData = async (expiry) => {
+    const response = await fetch(`http://localhost:8000/historical_data/?expiry=${expiry}`);
+    const data = await response.json();
+    // Process the data for your charts
+};
+
+
 const MinuteData = () => {
     const [expiry, setExpiry] = useState(null);
     const [strikes, setStrikes] = useState([]);

@@ -5,6 +5,33 @@ body {
     transition: background-color 0.3s, color 0.3s; /* Smooth transition */
 }
 
+/* Global light mode styles */
+body.light {
+    background-color: #ffffff; /* Light background */
+    color: #000000;           /* Light text */
+}
+
+/* Global dark mode styles */
+body.dark {
+    background-color: #121212;
+    color: #000000; /* Dark background */
+             /* Dark text */
+}
+
+/* Ensure transitions for smooth effect */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Example for links */
+a {
+    color: inherit; /* Matches text color */
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
 .body.light {
     background-color: #ffffff;
     color: #333333;

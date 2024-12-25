@@ -1,8 +1,0 @@
-file 1 : normalize_visualize.py
-Load Data: Reads a CSV file and returns it as a DataFrame, handling errors if the file can't be read.
-Select Columns: Displays available columns and prompts the user to select which ones to display. (timestamp is kept as default)
-Normalize Data: If more than three columns are selected, normalizes numerical data using MinMaxScaler.
-Display Data: Shows the selected columns along with the timestamp; applies normalization if necessary.
-Visualize Data: Creates a line plot with the timestamp on the x-axis and the selected data on the y-axis.
-Show Plot: Displays the plot with adjusted labels and layout for readability.
-

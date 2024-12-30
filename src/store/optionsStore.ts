@@ -10,32 +10,33 @@ interface DateRange {
 interface OptionsStore {
   selectedStrikes: number[];
   showSpotPrice: boolean;
+  showFuturesPrice: boolean;
   normalized: boolean;
   normalizationOptions: NormalizationOptions;
   mode: 'realtime' | 'historical';
   dataType: 'minute' | 'tick';
-  chartType: 'line' | 'bar' | 'candlestick' | 'histogram';
+  chartType: 'line' | 'bar' | 'candlestick' | 'histogram' | 'footprint';
   data: (MinuteData | TickData)[];
   dateRange: DateRange;
   setSelectedStrikes: (strikes: number[]) => void;
   toggleSpotPrice: () => void;
+  toggleFuturesPrice: () => void;
   toggleNormalization: () => void;
   setNormalizationOptions: (options: NormalizationOptions) => void;
   setMode: (mode: 'realtime' | 'historical') => void;
   setDataType: (type: 'minute' | 'tick') => void;
-  setChartType: (type: 'line' | 'bar' | 'candlestick' | 'histogram') => void;
+  setChartType: (type: 'line' | 'bar' | 'candlestick' | 'histogram' | 'footprint') => void;
   setData: (data: (MinuteData | TickData)[]) => void;
   setDateRange: (dateRange: DateRange) => void;
 }
 
-// Helper to get default date range (last 7 days)
 const getDefaultDateRange = () => {
   const to = new Date();
   const from = new Date();
   from.setDate(from.getDate() - 7);
   
   return {
-    from: from.toISOString().slice(0, 16), // Format: YYYY-MM-DDTHH:mm
+    from: from.toISOString().slice(0, 16),
     to: to.toISOString().slice(0, 16),
   };
 };
@@ -43,6 +44,7 @@ const getDefaultDateRange = () => {
 export const useOptionsStore = create<OptionsStore>((set) => ({
   selectedStrikes: [],
   showSpotPrice: false,
+  showFuturesPrice: false,
   normalized: false,
   normalizationOptions: {
     method: 'minmax',
@@ -54,6 +56,7 @@ export const useOptionsStore = create<OptionsStore>((set) => ({
   dateRange: getDefaultDateRange(),
   setSelectedStrikes: (strikes) => set({ selectedStrikes: strikes }),
   toggleSpotPrice: () => set((state) => ({ showSpotPrice: !state.showSpotPrice })),
+  toggleFuturesPrice: () => set((state) => ({ showFuturesPrice: !state.showFuturesPrice })),
   toggleNormalization: () => set((state) => ({ normalized: !state.normalized })),
   setNormalizationOptions: (options) => set({ normalizationOptions: options }),
   setMode: (mode) => set({ mode }),

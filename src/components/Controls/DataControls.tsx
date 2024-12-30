@@ -8,11 +8,13 @@ export const DataControls: React.FC = () => {
     chartType,
     normalized,
     showSpotPrice,
+    showFuturesPrice,
     setMode,
     setDataType,
     setChartType,
     toggleNormalization,
     toggleSpotPrice,
+    toggleFuturesPrice,
   } = useOptionsStore();
 
   return (
@@ -59,7 +61,7 @@ export const DataControls: React.FC = () => {
 
         <select
           value={chartType}
-          onChange={(e) => setChartType(e.target.value as 'line' | 'bar' | 'candlestick' | 'histogram')}
+          onChange={(e) => setChartType(e.target.value as any)}
           className="px-3 py-2 border rounded text-sm md:text-base 
                    bg-white dark:bg-gray-700 
                    text-gray-800 dark:text-gray-200
@@ -73,6 +75,7 @@ export const DataControls: React.FC = () => {
           <option value="bar">Bar Chart</option>
           <option value="candlestick">Candlestick</option>
           <option value="histogram">Histogram</option>
+          <option value="footprint">Footprint</option>
         </select>
       </div>
 
@@ -99,6 +102,18 @@ export const DataControls: React.FC = () => {
                      focus:ring-blue-500 dark:focus:ring-blue-400"
           />
           Show Spot Price
+        </label>
+
+        <label className="flex items-center gap-2 text-sm md:text-base text-gray-800 dark:text-gray-200">
+          <input
+            type="checkbox"
+            checked={showFuturesPrice}
+            onChange={toggleFuturesPrice}
+            className="w-4 h-4 rounded border-gray-300 dark:border-gray-600
+                     text-blue-500 dark:text-blue-400
+                     focus:ring-blue-500 dark:focus:ring-blue-400"
+          />
+          Add Futures Price
         </label>
       </div>
     </div>

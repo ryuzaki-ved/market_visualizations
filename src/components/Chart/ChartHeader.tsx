@@ -1,5 +1,5 @@
 import React from 'react';
-import { BarChart3, LineChart, CandlestickChart, BarChart, Info } from 'lucide-react';
+import { BarChart3, LineChart, CandlestickChart, BarChart, Footprints, Info } from 'lucide-react';
 import { useOptionsStore } from '../../store/optionsStore';
 import { Tooltip } from '../Common/Tooltip';
 
@@ -11,6 +11,7 @@ export const ChartHeader: React.FC = () => {
     { type: 'bar', icon: BarChart3, tooltip: 'Bar Chart' },
     { type: 'candlestick', icon: CandlestickChart, tooltip: 'Candlestick Chart' },
     { type: 'histogram', icon: BarChart, tooltip: 'Histogram' },
+    { type: 'footprint', icon: Footprints, tooltip: 'Footprint Chart' },
   ] as const;
 
   return (
